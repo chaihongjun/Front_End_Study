@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="cmn-hans">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <!-- some meta tags, important for SEO"-->
+    <meta name="description" content="put a short description in here" />
+    <meta name="keywords" content="put your important keywords in here" />
+    <title>滚动进度条-只有开始按钮</title>
+    <style type="text/css">
+    body {
+        background: #000;
+    }
+    .container {
+        margin: 0 auto;
+        width: 500px;
+        height: 100px;
+        border: 3px solid #919191;
+        background: #fff;
+    }
+    ul {
+        width: 500px;
+        height: 100px;
+        line-height: 100px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        text-align: center;
+    }
+    li {
+        display: inline-block;
+        background: #f90;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 30px;
+        vertical-align: middle
+    }
+    button {
+        display: block;
+        border-radius: 4px;
+        width: 100px;
+        height: 30px;
+        font-size: 18px;
+        margin: 20px auto 0;
+        cursor: pointer;
+    }
+    .active {
+        background: #f60;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var points = document.getElementsByTagName('li'); //小点
+        var btn = document.getElementsByTagName('button')[0]; //按钮
+        var timer = null;
+        btn.onclick = function() {
+            //间隔50毫秒，滚动执行一次
+            timer = setInterval(roll, 50);
+        };
+        var num = 0;
+        function roll() { //进度条滚动
+            //初始化的时候小点全部显示默认CSS
+            for (var i = 0; i < points.length; i++) {
+                points[i].classList.remove('active'); //去掉全部高亮
+            }
+            //接着从第一个点开始逐个点亮，并且判断是不是最后一个点
+            points[num].classList.add('active');
+            num++;
+            //如果到达最后一点，归0
+            if (num == points.length) {
+                num = 0;
+            }
+        }
+    };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <button type="button">开始</button>
+    </div>
+</body>
+</html>
