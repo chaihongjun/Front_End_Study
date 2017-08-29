@@ -1,0 +1,79 @@
+/*
+* @Author: chaighongjun
+* @Date:   2017-08-25 17:13:42
+* @Last Modified by:   chaighongjun
+* @Last Modified time: 2017-08-25 18:18:01
+*/
+
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+
+
+
+.container {
+    margin: 30px auto;
+
+    width: 900px;
+    height: 300px;
+}
+
+ul {
+    list-style: none;
+    /* border: 1px solid #ccc; */
+    width: 898px;
+    height: 300px;
+    margin: 10px auto 0;
+}
+
+
+li {
+    display: block;
+    float: left;
+    cursor: pointer;
+    margin: 5px;
+    position: relative;
+}
+
+li:hover {
+    box-shadow: 1px 1px 10px #ccc;
+
+}
+
+img {
+    display: block;
+}
+
+span{
+
+width: 20px;
+height: 20px;
+
+}
+.edit{
+    position: absolute;
+    background: url(../images/edit.png) 0 0;
+    top: 5px;
+    z-index: 2;
+    left: 5px;
+}
+
+.remove{
+     position: absolute;
+     top: 5px;
+     right: 5px;
+        background: url(../images/edit.png)0 60px;
+        z-index: 2;
+
+}
+
+
+p{
+ background: #c7c7c7;
+ height: 30px;
+ line-height: 30px;
+
+}
