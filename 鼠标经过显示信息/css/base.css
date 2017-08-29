@@ -1,0 +1,64 @@
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    ul {
+        list-style: none;
+    }
+    .container>ul li img {
+        display: block;
+    }
+ .container>ul>li{
+    float: left;
+    margin: 0 10px 10px 0;
+    border: 1px solid #ccc;
+    position: relative;
+ }
+
+ .container>ul>li:hover{
+     border: 2px solid green;
+    margin:10px;
+ }
+
+    .info {
+        display: none;
+    }
+    .container {
+        width: 800px;
+        margin: 0 auto;
+        height: 600px;
+    }
+    .container ul {
+        width: 770px;
+        height: 100%;
+        margin: 50px auto 0;
+    }
+
+.container > ul > li .info{
+
+    padding:10px;
+
+
+}
+
+
+    .container > ul > li:hover .info {
+        display: block;
+        z-index: 3;
+        position: absolute;
+        top: -2px;
+        left: 164px;
+        background: #fff;
+        width: 200px;
+          border: 2px solid green;
+         overflow:hidden;
+
+    }
+
+    .container > ul > li:hover img{
+         z-index: 9;
+
+
+    }
+
+
