@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="cmn-hans">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <!-- some meta tags, important for SEO"-->
+    <meta name="description" content="put a short description in here" />
+    <meta name="keywords" content="put your important keywords in here" />
+    <title>文字搬运</title>
+    <style type="text/css">
+    .container {
+        width: 800px;
+        height: 400px;
+        padding: 10px;
+        border: 3px solid #ddd;
+        margin: 0 auto;
+    }
+
+    .left,
+    .right {
+        width: 300px;
+        height: 400px;
+        float: left;
+    }
+
+    textarea {
+        width: 300px;
+        height: 400px;
+        float: left;
+        background: #f50;
+        border: 0;
+        padding: 0;
+        color: #fff;
+    }
+
+    .left {
+        background: #f50;
+    }
+
+    .middle {
+        float: left;
+        width: 192px;
+        height: 400px;
+    }
+
+    .middle button {
+        color: #fff;
+        background: #f60;
+        border: 0;
+        cursor: pointer;
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .middle p {
+        width: 100%;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+    }
+
+    .roll {
+        list-style: none;
+        margin: 0 auto;
+    }
+
+    .roll li {
+        width: 10px;
+        height: 10px;
+        background: #f90;
+        float: left;
+        margin-right: 5px;
+        display: none;
+    }
+
+    .roll li.active {
+        background: green;
+    }
+
+    .right {
+        background: #f90;
+        border: 1px dashed #111;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var btn = document.getElementsByTagName('button')[0];
+        var left = document.getElementsByTagName('textarea')[0];
+        var right = document.getElementById('right');
+        var span = document.getElementsByTagName('span');
+        var roll = document.getElementById('roll');
+        var pointer = roll.getElementsByTagName('li');
+        var arr = [];
+        var timer = null;
+        btn.onclick = function() {
+            clearInterval(timer);
+            /*  初始化工作 */
+            //首先清空右侧的内容
+            right.innerHTML = '';
+            arr = [];
+            //清空显示的数字
+            span[0].innerHTML = span[1].innerHTML = '0';
+            //输入的字符串转成数组
+            var array = left.value.split('');
+            var arr_length = array.length; //左边的全部字符个数
+            span[1].innerHTML = arr_length; //数字显示总数
+            //clearInterval(timer);
+            /*  滚动数字 和 滚动条 */
+            //滚动数字初始化
+            var i = 0;
+            //滚动条高亮点 初始化
+            var n = 0;
+            if (left.value != '') {
+                timer = setInterval(function() {
+                    /* 滚动数字*/
+                    if (span[0].innerHTML < arr_length) {
+                        /* 文字右移*/
+                        //将左边的数组转移到右边
+                        //弹出左边数组元素并赋值给右边数组
+                        arr.push(array.shift());
+                        //将arr数组转换成字符串输出
+                        left.value = array.join('');
+                        right.innerHTML = arr.join('');
+                        i++;
+                        span[0].innerHTML = i;
+                        /*   滚动进度条  */
+                        //首先全部显示默认的CSS
+                        for (var j = 0; j < pointer.length; j++) {
+                            pointer[j].style.display = 'block';
+                            pointer[j].classList.remove('active');
+                        }
+                        //然后显示当前高亮
+                        pointer[n].classList.add('active');
+                        n++;
+                        //最后一个亮完之后再，从头开始
+                        if (n == pointer.length) {
+                            n = 0;
+                        }
+                    } else {
+                        /* 滚动完成隐藏滚动条*/
+                        for (var z = 0; z < pointer.length; z++) {
+                            pointer[z].style.display = 'none';
+                        }
+                        /* 清除定时器  */
+                        clearInterval(timer);
+                    }
+                }, 50);
+            } else {
+                alert("请输入内容");
+            }
+        };
+    };
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <textarea name=""></textarea>
+        </div>
+        <div class="middle">
+            <button type="button">文字右移</button>
+            <p> <span>0</span> / <span>0</span></p>
+            <ul id="roll" class="roll">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="right" id="right"></div>
+    </div>
+</body>
+
+</html>
