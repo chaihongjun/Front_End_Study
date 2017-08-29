@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="cmn-hans">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <!-- some meta tags, important for SEO"-->
+    <meta name="description" content="put a short description in here" />
+    <meta name="keywords" content="put your important keywords in here" />
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <title>简易选项卡</title>
+    <script type="text/javascript">
+    window.onload = function() {
+        var tabs = document.getElementById('tabs').getElementsByTagName('li');
+        var oDiv = document.getElementsByClassName('content');
+        for (var i = 0; i < tabs.length; i++) {
+            tabs[i].index = i;
+            tabs[i].onclick = function() {
+                for (var j = 0; j < tabs.length; j++) {
+                    tabs[j].classList.remove('active');
+                    oDiv[j].classList.add('inactive');
+                }
+                this.classList.add('active');
+                oDiv[this.index].classList.remove('inactive');
+            };
+        }
+    };
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="tabs" id="tabs">
+            <ul>
+                <li class="active"><a href="javascript:;" title="">新闻</a></li>
+                <li><a href="javascript:;" title="">音乐</a></li>
+                <li><a href="javascript:;" title="">视频</a></li>
+            </ul>
+        </div>
+        <div class="content">新闻内容</div>
+        <div class="content inactive">音乐内容</div>
+        <div class="content inactive">视频内容</div>
+    </div>
+</body>
+
+</html>
