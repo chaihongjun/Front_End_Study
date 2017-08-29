@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="cmn-hans">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <!-- some meta tags, important for SEO"-->
+    <meta name="description" content="put a short description in here" />
+    <meta name="keywords" content="put your important keywords in here" />
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <title>JS 生成随机验证码并验证</title>
+    <script type="text/javascript">
+    window.onload = function() {
+        var input = document.getElementsByTagName('input')[0];
+        var code = document.getElementById('code');
+        var btn = document.getElementsByTagName('button')[0];
+        //页面加载完生成一次验证码
+        identifyCode();
+        //点击验证码生成新的验证码
+        code.onclick = function() {
+            identifyCode();
+        };
+        //点击按钮验证一下
+        btn.onclick = function() {
+            validate();
+        };
+        //验证码生成
+        function identifyCode() {
+            var random = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+            //先生成一位验证码
+            //62表示数字和字母62可用个字符
+            code.innerHTML = random[Math.floor(Math.random() * 62)];
+            // 再生成3位验证码
+            for (var i = 0; i < 3; i++) {
+                code.innerHTML += random[Math.floor(Math.random() * 62)];
+            }
+        }
+        //验证验证码
+        function validate() {
+            if (code.innerHTML == input.value) {
+                alert('验证码输入正确!');
+            } else {
+                alert('验证码输入不正确，请重新输入!');
+                identifyCode();
+                input.value = '';
+            }
+        }
+    };
+    </script>
+</head>
+
+<body>
+    <div class="contianer">
+        <input type="text" name="" class="identify" placeholder="请输入验证码">
+        <a href="javascript:;" id="code" class="code">asdd</a>
+        <button type="button">验证</button>
+    </div>
+</body>
+
+</html>
