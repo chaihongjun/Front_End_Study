@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="cmn-hans">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <!-- some meta tags, important for SEO"-->
+    <meta name="description" content="put a short description in here" />
+    <meta name="keywords" content="put your important keywords in here" />
+    <title>留言板</title>
+    <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background: #808080;
+    }
+
+    .container {
+        background: #fff;
+        width: 360px;
+        height: 600px;
+        margin: 30px auto 0;
+        padding: 20px;
+    }
+
+    .message {
+        width: 100%;
+        height: 20px;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }
+
+    .control {
+        margin-bottom: 10px;
+    }
+
+    .content ul {
+        list-style: none;
+    }
+
+    .on {
+        background: #919191;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var btn = document.getElementsByTagName('button');
+        var message = document.getElementsByTagName('input')[0];
+        var content = document.getElementById('content');
+        //留言
+        btn[0].onclick = function() {
+            if (message.value == '') {
+                alert('请输入您要留言的内容！');
+            } else {
+                /*  将输入框内容插入下面的内容区域  */
+                //1.首先创建li节点
+                var oLi = document.createElement('li');
+                //首先判断下面是不是已经有内容了，如果是第一次创建
+                if (content.children.length == 0) {
+                    //没有子节点
+                    //2.li节点插入内容区域
+                    content.appendChild(oLi);
+                    //CSS 美化
+                } else {
+                    //如果已经有数据了
+                    //2.在第一个子节点前面插入li
+                    content.insertBefore(oLi, content.children[0]);
+                }
+                //3.内容框输入
+                oLi.innerHTML = message.value;
+                //输入完，清理输入框
+                message.value = '';
+                //选择li
+                var li = document.getElementsByTagName('li');
+                for (var i = 0; i < li.length; i++) {
+                    li[i].onclick = function() {
+                        this.classList.add('on');
+                    };
+                }
+            }
+        };
+        //批量删除
+        btn[1].onclick = function() {
+            //查找高亮的节点
+            // var sec=document.getElementsByClassName('on');
+            for (var i = 0; i < content.children.length; i++) {
+                if (content.children[i].classList.contains('on')) {
+                    content.removeChild(content.children[i]);
+                    i--;//删除一个索引少一个
+                }
+            }
+        };
+        //全部删除
+        btn[2].onclick = function() {
+            for (var i = 0; i < content.children.length; i++) {
+                content.removeChild(content.children[i]);
+                i--; //删除一个索引少一个
+            }
+        };
+    };
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" name="" placeholder="请输入您要留言的内容！" class="message">
+        <div class="control">
+            <button type="button">留言</button>
+            <button type="button">批量删除</button>
+            <button type="button">全部删除</button>
+        </div>
+        <div class="content">
+            <ul id="content">
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
