@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="cmn-hans">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <!-- some meta tags, important for SEO"-->
+    <meta name="description" content="put a short description in here" />
+    <meta name="keywords" content="put your important keywords in here" />
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <title>查找和替换</title>
+    <script type="text/javascript">
+    window.onload = function() {
+        var btn = document.getElementsByTagName('button');
+        var content = document.getElementById('content');
+        var tools = document.getElementById('tools');
+        var tabs = tools.getElementsByTagName('li');
+        var oDiv = tools.getElementsByTagName('div');
+        var inputs = document.getElementsByTagName('input');
+        //页面初始化：
+        //隐藏工具任务栏
+        tools.classList.add('hide');
+        //点击展开
+        btn[0].onclick = function() {
+            if (btn[1].classList.contains('hide') && btn[2].classList.contains('hide')) {
+                btn[1].classList.remove('hide');
+                btn[2].classList.remove('hide');
+                btn[1].classList.add('show');
+                btn[2].classList.add('show');
+            }
+        };
+        //点击 右侧  查找按钮 显示工具框
+        //并且高亮 "查找"
+        //隐藏替换
+        btn[1].onclick = function() {
+            //点击查找
+            //1.显示整个工具框
+            tools.classList.add('show');
+            tools.classList.remove('hide');
+            //2.高亮 查找tab 灭掉替换Tab
+            tabs[0].classList.add('active');
+            tabs[1].classList.remove('active');
+            //3.显示查找 功能，隐藏替换功能
+            oDiv[0].classList.add('show');
+            oDiv[0].classList.remove('hide');
+            oDiv[1].classList.add('hide');
+            oDiv[1].classList.remove('show');
+        };
+        //点击 右侧  替换按钮 显示工具框
+        //并且高亮 "替换"
+        //隐藏查找
+        btn[2].onclick = function() {
+            //点击隐藏
+            //1.显示整个工具框
+            tools.classList.add('show');
+            tools.classList.remove('hide');
+            //2.高亮 替换tab 灭掉查找Tab
+            tabs[1].classList.add('active');
+            tabs[0].classList.remove('active');
+            //3.显示替换 功能，隐藏查找功能
+            oDiv[1].classList.add('show');
+            oDiv[1].classList.remove('hide');
+            oDiv[0].classList.add('hide');
+            oDiv[0].classList.remove('show');
+        };
+        tabs[0].onclick = function() {
+            tabs[0].classList.add('active');
+            tabs[1].classList.remove('active');
+            oDiv[0].classList.add('show');
+            oDiv[0].classList.remove('hide');
+            oDiv[1].classList.add('hide');
+            oDiv[1].classList.remove('show');
+        };
+        tabs[1].onclick = function() {
+            tabs[1].classList.add('active');
+            tabs[0].classList.remove('active');
+            oDiv[1].classList.add('show');
+            oDiv[1].classList.remove('hide');
+            oDiv[0].classList.add('hide');
+            oDiv[0].classList.remove('show');
+        };
+
+
+         var bak =  content.innerHTML;
+        //查找
+        btn[3].onclick = function() {
+            //首先清理已经高亮的内容,利用备份的内容
+          content.innerHTML=bak;
+            //需要查找的内容
+            var aim = document.getElementById('aim').value;
+            // alert('aim:' + aim);
+            if (content.innerHTML.indexOf(aim) == -1) {
+                alert("没有找到匹配的内容!");
+            } else { //找到之后高亮处理
+                //将找到的字符串作为分隔符，将源内容分隔
+                content.innerHTML = content.innerHTML.split(aim).join('<span>' + aim + '</span>');
+            }
+        };
+        btn[4].onclick = function() {
+                 //首先清理已经高亮的内容,利用备份的内容
+          content.innerHTML=bak;
+            //被替换的内容
+            var old = document.getElementById('old').value;
+            //替换的内容
+            var update = document.getElementById('update').value;
+            //首先判断被替换的内容有没有
+            if (content.innerHTML.indexOf(old) == -1) {
+                alert("没有找到可以替换的内容!");
+            } else {
+                //找到了可以替换的内容
+                content.innerHTML = content.innerHTML.split(old).join('<span>' + update + '</span>');
+            }
+        };
+    };
+    </script>
+</head>
+<body>
+    <div class="container ">
+        <div class="content " id='content'>
+            1969年1月，我到文安驿公社接北京知青。就是在这个时候，我第一次见到了近平。当时，梁家河派了十几个年轻力壮的社员去接知青。怕人手不够，我们还牵了毛驴，帮着驮行李。知青们的行李有铺盖卷，有箱子，我们轮流帮着拿行李，你拿一气儿，我拿一气儿，几十个人，浩浩荡荡地就回到村里来了。我记得很清楚，当时梁家河村一共来了十五名北京知青，十一名男知青，四名女知青。当时梁家河村委会接待室是一队的地方，分来五名男知青，四名女知青；近平和其余五名男知青在后面的二队。村里当时安排我父亲给二队的知青做饭。
+        </div>
+        <div class="control ">
+            <button type="button">展开</button>
+            <button type="button" class="hide">查找</button>
+            <button type="button" class="hide">替换</button>
+        </div>
+        <div class="tools clear" id='tools'>
+            <ul>
+                <li>查找</li>
+                <li>替换</li>
+            </ul>
+            <div class="tabs">
+                <input type="text" name="" id="aim">
+                <button type="button">查找</button>
+            </div>
+            <div class="tabs">
+                <input type="text" name="" id="old">
+                <input type="text" name="" id="update">
+                <button type="button">替换</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

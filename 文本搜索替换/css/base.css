@@ -1,0 +1,297 @@
+/*
+* @Author: chaighongjun
+* @Date:   2017-08-25 13:59:08
+* @Last Modified by:   chaighongjun
+* @Last Modified time: 2017-08-25 16:20:45
+*/
+
+
+/* reset */
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+p,
+blockquote,
+pre,
+hr,
+figure,
+table,
+caption,
+th,
+td,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+menu {
+    margin: 0;
+    padding: 0;
+}
+
+header,
+footer,
+section,
+article,
+aside,
+nav,
+hgroup,
+address,
+figure,
+figcaption,
+menu,
+details {
+    display: block;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+caption,
+th {
+    font-weight: normal;
+    text-align: left;
+}
+
+html,
+body,
+fieldset,
+img,
+iframe,
+abbr {
+    border: 0;
+}
+
+i,
+cite,
+em,
+var,
+address,
+dfn {
+    font-style: normal;
+}
+
+[hidefocus],
+summary {
+    outline: 0;
+}
+
+li {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+small {
+    font-size: 100%;
+}
+
+sup,
+sub {
+    font-size: 83%;
+}
+
+pre,
+code,
+kbd,
+samp {
+    font-family: inherit;
+}
+
+q:before,
+q:after {
+    content: none;
+}
+
+textarea {
+    overflow: auto;
+
+    resize: none;
+}
+
+label,
+summary {
+    cursor: default;
+}
+
+a,
+button {
+    cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+em,
+strong,
+b {
+    font-weight: bold;
+}
+
+del,
+ins,
+u,
+s,
+a,
+a:hover {
+    text-decoration: none;
+}
+
+body,
+textarea,
+input,
+button,
+select,
+keygen,
+legend {
+    font: 12px/1.14 arial, \5b8b\4f53;
+
+    color: #333;
+
+    outline: 0;
+}
+
+body {
+    background: #fff;
+}
+
+a,
+a:hover {
+    color: #333;
+}
+
+
+
+/* 清除浮动*/
+
+.clear {
+    overflow: hidden;
+    zoom: 1;
+}
+
+.clear:after {
+    display: block;
+    visibility: hidden;
+    clear: both;
+    overflow: hidden;
+
+    height: 0;
+
+    content: "";
+}
+
+
+/* 清除浮动*/
+
+.container {
+    margin: 0 auto;
+    padding: 50px;
+    width: 900px;
+    height: 600px;
+
+    background: #c8c8c8;
+}
+
+.content {
+    float: left;
+
+    margin: 50px auto 10px;
+    padding: 10px;
+    width: 500px;
+    height: 300px;
+
+    font-family: microsoft yahei;
+    font-size: 14px;
+    line-height: 24px;
+
+    background: #fff;
+}
+
+.content span{
+    color: #f60;
+}
+
+.control {
+    float: left;
+
+    margin-top: 50px;
+    margin-left: 50px;
+    width: 50px;
+}
+
+button {
+    width: 50px;
+    height: 30px;
+
+    line-height: 30px;
+}
+
+.control button:nth-child(2):hover,
+.control button:nth-child(3):hover {
+    color: #fff;
+    background: #f60;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+
+.tools {
+    border: 15px solid #232321;
+    width: 450px;
+    height: 150px;
+        padding: 10px;
+}
+
+.tools ul{
+
+    text-align: center;
+
+    height: 30px;
+    border-bottom: 3px solid #f60;
+}
+
+
+.tools ul li {
+    float: left;
+    font-size: 16px;
+    cursor: pointer;
+    line-height: 30px;
+    width: 50px;
+}
+
+.active{
+        border-radius: 4px;
+        background: #f60;
+        color: #fff;
+
+}
+
