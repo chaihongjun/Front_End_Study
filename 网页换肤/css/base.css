@@ -1,0 +1,83 @@
+/*
+* @Author: chaighongjun
+* @Date:   2017-08-25 13:46:13
+* @Last Modified by:   chaighongjun
+* @Last Modified time: 2017-08-25 13:47:29
+*/
+ * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            height: 100%;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            float: left;
+        }
+
+        .header {
+            width: 600px;
+            height: 100px;
+            margin: 0 auto;
+        }
+
+        .skin {
+            width: 100%;
+            height: 40px;
+            padding-top: 10px;
+        }
+
+        .skin li {
+            width: 10px;
+            height: 10px;
+            line-height: 30px;
+            margin-right: 10px;
+            padding: 5px;
+            cursor: pointer;
+        }
+        nav {
+            height: 50px;
+        }
+
+        nav ul {
+            width: 598px;
+            height: 48px;
+            border: 1px solid #ccc;
+            margin: 0 auto;
+
+        }
+
+        nav ul li {
+            display: block;
+            float: left;
+            line-height: 48px;
+            height: 48px;
+            width: 99px;
+            text-align: center;
+        }
+
+        nav ul li a {
+            display: block;
+            height: 48px;
+            line-height: 48px;
+            border-right: 1px solid #ccc;
+            margin-bottom: auto;
+            margin-top: auto;
+            color: #fff;
+
+        }
+
+        nav ul li:nth-last-child(1) a {
+            border-right: 0
+        }

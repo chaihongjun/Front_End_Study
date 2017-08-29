@@ -1,0 +1,45 @@
+/*
+* @Author: chaighongjun
+* @Date:   2017-08-25 13:01:19
+* @Last Modified by:   chaighongjun
+* @Last Modified time: 2017-08-25 13:26:27
+*/
+
+
+/*
+* @Author: chaighongjun
+* @Date:   2017-08-25 13:01:50
+* @Last Modified by:   chaighongjun
+* @Last Modified time: 2017-08-25 13:20:50
+*/
+
+body {
+    background: -webkit-gradient(linear, left top, left bottom, from(black), to(#fff));
+    background: -webkit-linear-gradient(top, black, #fff);
+    background:      -o-linear-gradient(top, black, #fff);
+    background:         linear-gradient(top, black, #fff);
+}
+
+nav {
+    background: black;
+}
+
+.green {
+    background: green;
+}
+
+
+.black {
+    background: black;
+}
+
+li.black.current {
+    border: 5px solid black;
+    padding: 0;
+
+    background: #fff;
+}
+
+.red {
+    background: red;
+}

@@ -1,0 +1,37 @@
+/*
+* @Author: chaighongjun
+* @Date:   2017-08-25 13:01:50
+* @Last Modified by:   chaighongjun
+* @Last Modified time: 2017-08-25 13:48:03
+*/
+
+body {
+    background: -webkit-gradient(linear, left top, left bottom, from(green), to(#fff));
+    background: -webkit-linear-gradient(top, green, #fff);
+    background:      -o-linear-gradient(top, green, #fff);
+    background:         linear-gradient(top, green, #fff);
+}
+
+nav {
+    background: green;
+}
+
+
+.green {
+    background: green;
+}
+
+li.green.current{
+    border: 5px solid green;
+    padding: 0;
+    background: #fff;
+}
+
+
+.black {
+    background: black;
+}
+
+.red {
+    background: red;
+}
