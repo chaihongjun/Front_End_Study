@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="cmn-hans">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name=applicable-device content="pc,mobile">
+    <!-- some meta tags, important for SEO"-->
+    <meta name="description" content="put a short description in here" />
+    <meta name="keywords" content="put your important keywords in here" />
+    <title>滚动页面显示悬浮导航</title>
+    <style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .header {
+        width: 100%;
+        height: 600px;
+        line-height: 600px;
+        text-align: center;
+        font-size: 40px;
+    }
+
+    nav {
+        width: 100%;
+        height: 50px;
+        background: #000;
+        color: #fff;
+    }
+
+    ul {
+        list-style: none;
+        width: 800px;
+        line-height: 50px;
+        height: 50px;
+        margin: 0 auto;
+    }
+
+    li {
+        float: left;
+        width: 100px;
+    }
+
+    a {
+        text-decoration: none;
+        color: #fff;
+        display: block;
+        text-align: center;
+    }
+
+    .cloths,
+    .shoes,
+    .toys {
+        width: 100%;
+        height: 500px;
+        line-height: 500px;
+        text-align: center;
+        font-size: 40px;
+    }
+
+    .cloths {
+        background: #ccc;
+    }
+
+    .shoes {
+        background: #ddd;
+    }
+
+    .toys {
+        background: #eee;
+    }
+
+    .fixed {
+        position: fixed;
+        top: 0;
+        animation: show;
+        animation-duration: 0.5s;
+    }
+
+    @keyframes show {
+        from {
+            top: -50px;
+        }
+        to {
+            top: 0;
+        }
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        var nav = document.getElementsByTagName('nav')[0];
+        //滚动页面的时候
+        document.onscroll = function(evt) {
+            // var e=evt||window.event||arguments.callee.caller.arguments[0];
+            // console.log(e.target||e.srcElement);
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            //当前滚动高度》NAV的高度位置都是时候，悬停导航
+            if (scrollTop > nav.offsetTop) {
+                nav.classList.add('fixed');
+            } else {
+                nav.classList.remove('fixed');
+            }
+        };
+    };
+    </script>
+</head>
+
+<body>
+    <header id="header" class="header">
+        banner
+    </header>
+    <!-- /header -->
+    <nav>
+        <ul>
+            <li><a href="" title="">首页</a></li>
+            <li><a href="" title="">秒杀</a></li>
+            <li><a href="" title="">女装</a></li>
+            <li><a href="" title="">内衣</a></li>
+            <li><a href="" title="">美妆</a></li>
+            <li><a href="" title="">特卖</a></li>
+            <li><a href="" title="">团购</a></li>
+            <li><a href="" title="">上新</a></li>
+        </ul>
+    </nav>
+    <section class="cloths">
+        cloths
+    </section>
+    <section class="shoes">
+        shoes
+    </section>
+    <section class="toys">
+        toys
+    </section>
+</body>
+
+</html>

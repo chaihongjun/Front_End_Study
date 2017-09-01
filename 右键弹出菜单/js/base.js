@@ -10,7 +10,13 @@ window.onload = function() {
         //鼠标单击右键弹出自定义菜单
         document.oncontextmenu = function(evt) {
             var e = evt || window.event;
+            //注销之后不能弹出右键
+            if(document.body.style.background=='rgb(0, 0, 0)'){
+             menu.style.display = 'none';
+            }
             //当前页面背景不是黑色
+            //没有注销
+            else{
             if (wall.style.display != 'block') {
                 menu.style.display = 'block';
                 menu.style.left = e.clientX + 'px';
@@ -18,6 +24,7 @@ window.onload = function() {
                 //保存弹窗的坐标
                 menuX = e.clientX;
                 menuY = e.clientY;
+            }
             }
             //将默认的弹窗屏蔽了
             return false;
@@ -42,13 +49,14 @@ window.onload = function() {
         //注销 按钮
         menu.getElementsByTagName('li')[6].onclick = function() {
             menu.style.display = 'none';
-            document.body.style.background = '#000';
+            document.body.style.background = 'rgb(0, 0, 0)';
         };
-        //选择图片并显示  ？？？？？？？？？？？？
+        //选择图片并显示
         for (var i = 0; i < imgs.length; i++) {
                 imgs[i].index=i;
-            imgs[i].onclick = function() {
-                document.body.style.background = "url('images/'+this.index+1+'.jpg')";
+                imgs[i].onclick = function() {
+                    var num=this.index+1;
+                document.body.style.background = "url(images/"+num+".jpg)";
             };
         }
         //关闭按钮
