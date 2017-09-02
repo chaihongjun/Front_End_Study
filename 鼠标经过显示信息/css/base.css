@@ -1,64 +1,50 @@
     * {
-        margin: 0;
-        padding: 0;
-    }
-    ul {
-        list-style: none;
-    }
-    .container>ul li img {
-        display: block;
-    }
- .container>ul>li{
+    margin: 0;
+    padding: 0;
+}
+ul {
+    list-style: none;
+}
+.container {
+    margin: 0 auto;
+    width: 800px;
+    height: 600px;
+}
+.container ul {
+    margin: 50px auto 0;
+    width: 770px;
+    height: 100%;
+}
+.container > ul > li {
     float: left;
+    position: relative;
     margin: 0 10px 10px 0;
     border: 1px solid #ccc;
-    position: relative;
- }
-
- .container>ul>li:hover{
-     border: 2px solid green;
-    margin:10px;
- }
-
-    .info {
-        display: none;
-    }
-    .container {
-        width: 800px;
-        margin: 0 auto;
-        height: 600px;
-    }
-    .container ul {
-        width: 770px;
-        height: 100%;
-        margin: 50px auto 0;
-    }
-
-.container > ul > li .info{
-
-    padding:10px;
-
-
 }
-
-
-    .container > ul > li:hover .info {
-        display: block;
-        z-index: 3;
-        position: absolute;
-        top: -2px;
-        left: 164px;
-        background: #fff;
-        width: 200px;
-          border: 2px solid green;
-         overflow:hidden;
-
-    }
-
-    .container > ul > li:hover img{
-         z-index: 9;
-
-
-    }
-
-
+.container > ul li img {
+    display: block;
+    position: relative;
+}
+/* transition 不支持display 属性，必须使用visibility,
+visibility属性的元素会占用空间，所以设置宽高为0
+*/
+.container > ul > li:hover .info {
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 166px;
+    z-index: 99;
+    border: 1px solid #ccc;
+    width: 250px;
+    height: 300px;
+    background: #fff;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+.info {
+    visibility: hidden;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+}

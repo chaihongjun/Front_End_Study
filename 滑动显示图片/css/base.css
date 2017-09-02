@@ -1,8 +1,8 @@
 /*
 * @Author: chaihongjun
 * @Date:   2017-08-27 13:43:29
-* @Last Modified by:   chaihongjun
-* @Last Modified time: 2017-08-27 14:23:52
+* @Last Modified by:   chaighongjun
+* @Last Modified time: 2017-09-01 18:03:44
 */
 * {
     margin: 0;
@@ -13,40 +13,81 @@
     height: 100%;
     margin: 0 auto;
 }
-ul {
 
-    width: 100%;
+/*
+思路：
+0.全部初始化，只显示Li的高度为P的高度
+1. 初始化的时候只显示第一张图
+2.鼠标经过外层容器UL，将全部的图片隐藏（li限制高度），
+3.再将指向对于的LI恢复高度
+*/
+
+
+ul {
+    width: 300px;
     list-style: none;
     border: 1px solid #ccc;
 }
+
+/* 初始化Li的高度为P的高度*/
 ul li {
     width: 300px;
-   /*  初始化的时候LI只显示标题部分 */
-   /* li 的高度等于 标题部分高度 超出部分隐藏*/
    height: 40px;
    line-height: 40px;
    overflow: hidden;
 
 }
 
+/*  重置，显示第一个图*/
+ul li:nth-child(1) {
+    height: 290px; /* 高度为P的高度40px+图片的高度250px=290px*/
+
+}
+ul li:nth-child(1) p{
+    color: #fff;
+    background: #f63;
+}
 
 
+/*  鼠标经过容器ul,全部重置 */
+ul:hover li{
+    height: 40px;
+}
+
+ul:hover li p{
+       height: 40px;
+       color: #000;
+    background: #efefef;
+}
 
 
 ul li:hover{
-    /*  鼠标经过LI的时候 ，将整个LI显示出来 */
-    /* 还原LI本身的应有的高度  P的高度40px+图片的高度250px=290px*/
-    height:290px;
-    /* 增加一个渐进的动画效果*/
+    height: 290px;
+}
+
+
+
+
+
+
+
+
+
+
+ul li:hover {
+      height:290px;
+        /* 增加一个渐进的动画效果*/
     -webkit-transition: ease;
     -o-transition: ease;
     transition: ease 1s;
 }
+
 p {
     line-height: 20px;
     height: 20px;
     padding: 10px;
-    background: #f70;
+    background: #efefef;
+    color: #666;
 }
 img {
     display: block;
